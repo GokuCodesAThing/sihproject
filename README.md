@@ -1,0 +1,2 @@
+# sihproject
+waste management system
