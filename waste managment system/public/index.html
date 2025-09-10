@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-recycle"></i>
+                <span>EcoWaste</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="login-btn" id="loginBtn">Login</button>
+                <button class="register-btn" id="registerBtn">Register</button>
+                <button class="logout-btn" id="logoutBtn" style="display: none;">Logout</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Smart Waste Management</h1>
+            <p>Efficient, sustainable, and user-friendly waste collection system for a cleaner environment</p>
+            <div class="hero-buttons">
+                <button class="cta-btn primary" id="requestPickupBtn">Request Pickup</button>
+                <button class="cta-btn secondary" id="learnMoreBtn">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-leaf"></i>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-trash-alt"></i>
+                    <h3>Waste Collection</h3>
+                    <p>Schedule pickups for various types of waste including household, recyclable, and hazardous materials.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Recycling</h3>
+                    <p>Proper disposal and recycling of materials to reduce environmental impact and promote sustainability.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Tracking</h3>
+                    <p>Real-time tracking of your waste collection requests and status updates.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile App</h3>
+                    <p>Easy-to-use interface for scheduling pickups and managing your waste collection account.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Username or Email</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <div class="modal-footer">
+                <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+                <p>Admin? <a href="#" id="showAdminLogin">Admin Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regFullName">Full Name</label>
+                    <input type="text" id="regFullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Phone</label>
+                    <input type="tel" id="regPhone">
+                </div>
+                <div class="form-group">
+                    <label for="regAddress">Address</label>
+                    <textarea id="regAddress" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+            <div class="modal-footer">
+                <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" required>
+                </div>
+                <button type="submit" class="submit-btn">Admin Login</button>
+            </form>
+            <div class="modal-footer">
+                <p>Default admin: admin / admin123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Waste Request Modal -->
+    <div id="wasteRequestModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Request Waste Pickup</h2>
+            <form id="wasteRequestForm">
+                <div class="form-group">
+                    <label for="wasteType">Waste Type</label>
+                    <select id="wasteType" required>
+                        <option value="">Select waste type</option>
+                        <option value="household">Household Waste</option>
+                        <option value="recyclable">Recyclable Materials</option>
+                        <option value="hazardous">Hazardous Waste</option>
+                        <option value="electronic">Electronic Waste</option>
+                        <option value="organic">Organic Waste</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <select id="quantity" required>
+                        <option value="">Select quantity</option>
+                        <option value="small">Small (1-2 bags)</option>
+                        <option value="medium">Medium (3-5 bags)</option>
+                        <option value="large">Large (6+ bags)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pickupDate">Preferred Pickup Date</label>
+                    <input type="date" id="pickupDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description (Optional)</label>
+                    <textarea id="description" rows="3" placeholder="Additional details about your waste..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Section (Hidden by default) -->
+    <section id="dashboard" class="dashboard" style="display: none;">
+        <div class="container">
+            <h2>Welcome, <span id="userName"></span>!</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>My Requests</h3>
+                    <div id="myRequestsList" class="requests-list">
+                        <!-- Requests will be loaded here -->
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Quick Actions</h3>
+                    <button class="action-btn" id="newRequestBtn">
+                        <i class="fas fa-plus"></i>
+                        New Request
+                    </button>
+                    <button class="action-btn" id="viewHistoryBtn">
+                        <i class="fas fa-history"></i>
+                        View History
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard Section (Hidden by default) -->
+    <section id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <div class="container">
+            <h2>Admin Dashboard</h2>
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3>All Requests</h3>
+                    <div id="allRequestsList" class="admin-requests-list">
+                        <!-- All requests will be loaded here -->
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <h3>Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalRequests">0</span>
+                            <span class="stat-label">Total Requests</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="pendingRequests">0</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="completedRequests">0</span>
+                            <span class="stat-label">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Our System</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Our waste management system is designed to provide efficient and sustainable waste collection services. We prioritize environmental responsibility and user convenience.</p>
+                    <p>With our advanced tracking system and user-friendly interface, managing waste collection has never been easier.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Service</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Platform</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-leaf"></i>
+                        <span>Eco-Friendly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ecowaste.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Green Street, Eco City, EC 12345</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EcoWaste</h3>
+                    <p>Making waste management simple and sustainable.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Waste Collection</li>
+                        <li>Recycling</li>
+                        <li>Hazardous Waste</li>
+                        <li>Electronic Waste</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcoWaste. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
